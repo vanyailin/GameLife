@@ -1,0 +1,33 @@
+.game {
+	width: 100%;	
+}
+.field{
+	border: 1px solid black;
+	width: 40px;
+	height: 40px;
+	float: left;
+	}
+.headline{
+	display: inline-block;	
+	margin-left:47%;
+	font-size:16pt;
+	font-weight:bold;
+	}
+.rules{
+	display: inline-block;	
+	margin-left:38%;
+	font-size:12pt;
+	text-align:center;
+	}
+	
+.app-settings {
+	width: 450px;
+	height: 450px;
+	margin:0 auto;
+}
+.live{
+	background-color: red;
+	}
+.dead{
+	background-color: white;
+	}
