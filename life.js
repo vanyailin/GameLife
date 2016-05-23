@@ -2,7 +2,7 @@ var appWidth=10;
 var appHeight=10;
 var startGame = [];
 
-$.ajax({url:'https://github.com/vanyailin/GameLife/blob/master/live.json', 
+$.ajax({url:'https://vanyailin.github.io/vanyailin/GameLife/live.json', 
 		dataType: "json"
 		}).then(function(data){
 		startGame=data;
