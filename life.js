@@ -2,7 +2,7 @@ var appWidth=10;
 var appHeight=10;
 var startGame = [];
 
-$.ajax({url:'https://vanyailin.github.io/vanyailin/GameLife/live.json', 
+$.ajax({url:'https://github.com/vanyailin/GameLife/live.json', 
 		dataType: "json"
 		}).then(function(data){
 		startGame=data;
@@ -16,7 +16,7 @@ $.ajax({url:'https://vanyailin.github.io/vanyailin/GameLife/live.json',
 				.data('x',x).data('y',y)
 				.appendTo('#app')
 		}
-	}
+	} 
 	$.each(startGame, function() {
 		console.log(this);
 		$('#field'+this[0]+'-'+this[1]).addClass('live').removeClass('dead');
