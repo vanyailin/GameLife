@@ -1,13 +1,11 @@
 var appWidth=10;
 var appHeight=10;
 var startGame = [];
-
-$.ajax({url:'https://github.com/vanyailin/GameLife/live.json', 
-		dataType: "json"
-		}).then(function(data){
+$.getJSON('https://github.com/vanyailin/GameLife/blob/gh-pages/live.json', function(data){
 		startGame=data;
 		console.log(startGame);
-	$(function(){
+		});
+$(function(){
 	for (var x = 1; x <= appWidth; x++) {
 		for (var y = 1; y <= appHeight; y++) {
 			$('<div></div>')
@@ -16,7 +14,7 @@ $.ajax({url:'https://github.com/vanyailin/GameLife/live.json',
 				.data('x',x).data('y',y)
 				.appendTo('#app')
 		}
-	} 
+	}
 	$.each(startGame, function() {
 		console.log(this);
 		$('#field'+this[0]+'-'+this[1]).addClass('live').removeClass('dead');
@@ -35,7 +33,7 @@ $.ajax({url:'https://github.com/vanyailin/GameLife/live.json',
 				elements = [x, y, "dead"];
 				newGeneration.push(elements);
 			}
-		});
+			});
 		$.each(newGeneration, function() {
 			$('#field' + this[0] + '-' + this[1]).attr('class', 'field ' + this[2]);
 		});
@@ -46,7 +44,6 @@ $.ajax({url:'https://github.com/vanyailin/GameLife/live.json',
 	        alert("Спасибо за игру! :)");
 		}
 	},2000);
-	
 	function neigbours(x, y) {
 	var life = 0;
 	var directions = [{x:-1,y:-1},{x:-1, y:0},{x:-1, y:1},{x:0, y:1},{x:0,y:-1},{x:1, y:1},{x:1, y:0},{x:1, y:-1}]
@@ -54,11 +51,11 @@ $.ajax({url:'https://github.com/vanyailin/GameLife/live.json',
 		if ($('#field'+(x+directions[i].x)+'-'+(y+directions[i].y)).hasClass('live')) {
 		life++;
 	}	
-	}
-	return life;
-	}
-})
-		});
+ 	}
+ 	return life;
+ 	}
+ 		});
+	
 	
 	
 
