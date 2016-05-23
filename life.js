@@ -1,11 +1,13 @@
 var appWidth=10;
 var appHeight=10;
 var startGame = [];
-$.getJSON('live.json', function(data){
+
+$.ajax({url:'https://github.com/vanyailin/GameLife/blob/master/live.json', 
+		dataType: "json"
+		}).then(function(data){
 		startGame=data;
 		console.log(startGame);
-	});
-$(function(){
+	$(function(){
 	for (var x = 1; x <= appWidth; x++) {
 		for (var y = 1; y <= appHeight; y++) {
 			$('<div></div>')
@@ -44,32 +46,19 @@ $(function(){
 	        alert("Спасибо за игру! :)");
 		}
 	},2000);
-	function neigbours(i, j) {
-	var life = 0;		
-	if (i-1 > 0 && j-1 > 0 && $('#field'+(i-1)+'-'+(j-1)).hasClass('live')) {
+	
+	function neigbours(x, y) {
+	var life = 0;
+	var directions = [{x:-1,y:-1},{x:-1, y:0},{x:-1, y:1},{x:0, y:1},{x:0,y:-1},{x:1, y:1},{x:1, y:0},{x:1, y:-1}]
+			for (var i=0; i<directions.length; i++){
+		if ($('#field'+(x+directions[i].x)+'-'+(y+directions[i].y)).hasClass('live')) {
 		life++;
-	}
-	if (i-1 > 0 && $('#field'+(i-1)+'-'+j).hasClass('live')) {
-		life++;
-	}
-	if (i-1 > 0 && j+1 > 0 && $('#field'+(i-1)+'-'+(j+1)).hasClass('live')) {
-		life++;
-	}
-	if (j-1 > 0 && $('#field'+i+'-'+(j-1)).hasClass('live')) {
-		life++;
-	}
-	if (j+1 < 11 && $('#field'+i+'-'+(j+1)).hasClass('live')) {
-		life++;
-	}
-	if (i+1 < 11 && j-1 > 0 && $('#field'+(i+1)+'-'+(j-1)).hasClass('live')) {
-		life++;
-	}
-	if (i+1 < 11 && $('#field'+(i+1)+'-'+j).hasClass('live')) {
-		life++;
-	}
-	if (i+1 < 11 && j+1 < 11 && $('#field'+(i+1)+'-'+(j+1)).hasClass('live')) {
-		life++;
+	}	
 	}
 	return life;
 	}
-});
+})
+		});
+	
+	
+
