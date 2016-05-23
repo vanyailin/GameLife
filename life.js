@@ -58,7 +58,7 @@ $.ajax({url:'https://github.com/vanyailin/GameLife/blob/master/live.json',
 	return life;
 	}
 })
-		});
+		}); 
 	
 	
 
